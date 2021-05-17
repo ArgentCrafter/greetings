@@ -6,8 +6,10 @@ const counter = document.getElementById("counter");
 
 let greet = greetFunctions();
 
-var nameObj = greet.getGreetedNames;
-var nameObjKeys = Object.keys(nameObj);
+function counterLoad() {
+counter.innerHTML = Object.keys(JSON.parse(localStorage.getItem("names"))).length;
+console.log(JSON.parse(localStorage.getItem("names"))).length;
+};
 
 btnGreet.addEventListener("click", function() {
     var checkedBtn = document.querySelector("input[name='langInput']:checked");
@@ -21,17 +23,12 @@ btnGreet.addEventListener("click", function() {
         setTimeout(function(){ display.innerHTML = ""}, 5000)
     } else{
         greet.btnGreetClicked(nameInputElement.value);
-        nameObj = greet.getGreetedNames();
-        nameObjKeys = Object.keys(nameObj);
-        localStorage.setItem("names", nameObjKeys);
+        localStorage.setItem("names", JSON.stringify(greet.getGreetedNames()));
 
-        var displayName = nameInputElement.value[0].toUpperCase() + nameInputElement.value.slice(1).toLowerCase() + "!";
-        display.innerHTML = checkedBtn.value + displayName;
+        display.innerHTML = checkedBtn.value + (nameInputElement.value[0].toUpperCase() + nameInputElement.value.slice(1).toLowerCase() + "!");
         nameInputElement.value = "";
-
-        counter.innerHTML = nameObjKeys.length;
     }
-
+    counter.innerHTML = Object.keys(JSON.parse(localStorage.getItem("names"))).length;
 });
 
 btnReset.addEventListener("click", function(){
