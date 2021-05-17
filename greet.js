@@ -8,22 +8,29 @@ let greet = greetFunctions();
 let regEx = /[a-z]/i;
 
 function counterLoad() {
-counter.innerHTML = Object.keys(JSON.parse(localStorage.getItem("names"))).length;
+    counter.innerHTML = Object.keys(JSON.parse(localStorage.getItem("names"))).length;
 };
 
-btnGreet.addEventListener("click", function() {
+btnGreet.addEventListener("click", function () {
     var checkedBtn = document.querySelector("input[name='langInput']:checked");
-    display.style.color="black";
+    display.style.color = "black";
 
-    if (!regEx.test(nameInputElement.value)){
+    if (nameInputElement.value.length > 10) {
         display.innerHTML = "Please enter a valid name.";
-        display.style.color="red";
-        setTimeout(function(){ display.innerHTML = "" }, 5000);
+        display.style.color = "red";
+        nameInputElement.value = "";
+        setTimeout(function () { display.innerHTML = "" }, 5000);
+    } else if (!regEx.test(nameInputElement.value)) {
+        display.innerHTML = "Please enter a valid name.";
+        display.style.color = "red";
+        nameInputElement.value = "";
+        setTimeout(function () { display.innerHTML = "" }, 5000);
     } else if (!checkedBtn) {
         display.innerHTML = "Please select a language.";
-        display.style.color="red";
-        setTimeout(function(){ display.innerHTML = ""}, 5000)
-    } else{
+        display.style.color = "red";
+        nameInputElement.value = "";
+        setTimeout(function () { display.innerHTML = "" }, 5000);
+    } else {
         if (localStorage["names"]) {
             greet.setGreetedNames(JSON.parse(localStorage.getItem("names")));
         }
@@ -37,7 +44,7 @@ btnGreet.addEventListener("click", function() {
     counter.innerHTML = Object.keys(JSON.parse(localStorage.getItem("names"))).length;
 });
 
-btnReset.addEventListener("click", function(){
+btnReset.addEventListener("click", function () {
     localStorage.clear();
     location.reload()
 })
