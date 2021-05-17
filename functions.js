@@ -13,8 +13,13 @@ function greetFunctions() {
         return greetedNames;
     }
 
+    function displayString(input){
+        return checkedBtn.value + (input[0].toUpperCase() + input.slice(1).toLowerCase() + "!");
+    }
+
     return{
     btnGreetClicked,
-    getGreetedNames
+    getGreetedNames,
+    displayString
     }
 }

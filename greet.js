@@ -5,15 +5,14 @@ const display = document.getElementById("displayMessage");
 const counter = document.getElementById("counter");
 
 let greet = greetFunctions();
+let regEx = /[a-z]/i;
 
 function counterLoad() {
 counter.innerHTML = Object.keys(JSON.parse(localStorage.getItem("names"))).length;
-console.log(JSON.parse(localStorage.getItem("names"))).length;
 };
 
 btnGreet.addEventListener("click", function() {
     var checkedBtn = document.querySelector("input[name='langInput']:checked");
-    let regEx = /[a-z]/i;
 
     if (!regEx.test(nameInputElement.value)){
         display.innerHTML = "Please enter a valid name.";
@@ -25,7 +24,7 @@ btnGreet.addEventListener("click", function() {
         greet.btnGreetClicked(nameInputElement.value);
         localStorage.setItem("names", JSON.stringify(greet.getGreetedNames()));
 
-        display.innerHTML = checkedBtn.value + (nameInputElement.value[0].toUpperCase() + nameInputElement.value.slice(1).toLowerCase() + "!");
+        display.innerHTML = greet.displayString(nameInputElement.value);
         nameInputElement.value = "";
     }
     counter.innerHTML = Object.keys(JSON.parse(localStorage.getItem("names"))).length;
