@@ -41,6 +41,16 @@
     margin-right: 50px;
 }
 
+.btn {
+    background-color: lightgreen;
+    border: 3px solid black;
+    border-radius: 6px;
+}
+
+.btn:hover {
+    background-color: rgb(96, 187, 96);
+}
+
 @media(min-width: 1100px){
     .inputs {
         margin-left: 220px;

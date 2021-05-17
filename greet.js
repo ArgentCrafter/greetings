@@ -13,18 +13,25 @@ counter.innerHTML = Object.keys(JSON.parse(localStorage.getItem("names"))).lengt
 
 btnGreet.addEventListener("click", function() {
     var checkedBtn = document.querySelector("input[name='langInput']:checked");
+    display.style.color="black";
 
     if (!regEx.test(nameInputElement.value)){
         display.innerHTML = "Please enter a valid name.";
+        display.style.color="red";
         setTimeout(function(){ display.innerHTML = "" }, 5000);
     } else if (!checkedBtn) {
         display.innerHTML = "Please select a language.";
+        display.style.color="red";
         setTimeout(function(){ display.innerHTML = ""}, 5000)
     } else{
+        if (localStorage["names"]) {
+            greet.setGreetedNames(JSON.parse(localStorage.getItem("names")));
+        }
+
         greet.btnGreetClicked(nameInputElement.value);
         localStorage.setItem("names", JSON.stringify(greet.getGreetedNames()));
 
-        display.innerHTML = greet.displayString(nameInputElement.value);
+        display.innerHTML = greet.displayString(nameInputElement.value, checkedBtn.value);
         nameInputElement.value = "";
     }
     counter.innerHTML = Object.keys(JSON.parse(localStorage.getItem("names"))).length;

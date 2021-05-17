@@ -1,6 +1,10 @@
 function greetFunctions() {
     var greetedNames = {};
 
+    function setGreetedNames(input){
+        greetedNames = input;
+    }
+
     function btnGreetClicked(input) {
         if (greetedNames[input.toLowerCase()] === undefined) {
             greetedNames[input.toLowerCase()] = 1 ;
@@ -13,13 +17,14 @@ function greetFunctions() {
         return greetedNames;
     }
 
-    function displayString(input){
-        return checkedBtn.value + (input[0].toUpperCase() + input.slice(1).toLowerCase() + "!");
+    function displayString(input, input2){
+        return input2 + (input[0].toUpperCase() + input.slice(1).toLowerCase() + "!");
     }
 
     return{
     btnGreetClicked,
     getGreetedNames,
-    displayString
+    displayString,
+    setGreetedNames
     }
 }
