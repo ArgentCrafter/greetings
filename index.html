@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="greet.css">
+    <title>Greetings!</title>
+</head>
+<body>
+    <div class="containerAll">
+        <div class="content">
+            <div class="heading">
+                <h1>Greetings!</h1>
+            </div>
+            <div class="inputCounter">
+                <div style="margin: auto;">
+                <label for="nameInput" class="nameInput">Name:</label>
+                <input type="text" id="nameInput" name="nameInput">
+            </div>
+                <span style="font-size: xx-large;" id="counter">0</span>
+            </div>    
+                <br><br>
+            <div class="inputs">
+            <div>
+                <input type="radio" id="english" name="langInput" value="Hello, ">
+                <label for="english">English</label>
+            </div>
+            <div>
+                <input type="radio" id="afrikaans" name="langInput" value="Hallo, ">
+                <label for="afrikaans">Afrikaans</label>
+            </div>
+            <div>
+                <input type="radio" id="xhosa" name="langInput" value="Molo, ">
+                <label for="xhosa">Xhosa</label>
+            </div>
+            </div>
+            <br>
+            <div class="greetMe">
+                <button type="button" id="greetMe" name="greetMe">Greet me!</button>
+                <button type="button" id="reset" name="reset">Reset</button>
+            </div>
+            <br>
+            <div class="display">
+                <h3 style="color: red;" id="displayMessage"></h3>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="functions.js"></script>
+<script src="greet.js"></script>
+</html>
