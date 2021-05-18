@@ -12,4 +12,10 @@ describe("Factory function tests:", function() {
         greet.btnGreetClicked("jAdEN");
         assert.equal(JSON.stringify(greet.getGreetedNames()), '{"jaden":1}')
     })
+    it("the btnGreet function should return an object with the 'jaden' key and the 'steven' key holding the values of 1 when given input='jAdEN' the first time it's ran and input='steven' the second", function() {
+        let greet = greetFunctions();
+        greet.btnGreetClicked("jAdEN");
+        greet.btnGreetClicked("steven");
+        assert.equal(JSON.stringify(greet.getGreetedNames()), '{"jaden":1,"steven":1}')
+    })
 });
