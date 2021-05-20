@@ -17,7 +17,7 @@ btnGreet.addEventListener("click", function () {
     var checkedBtn = document.querySelector("input[name='langInput']:checked");
     display.style.color = "black";
 
-    if (nameInputElement.value.length > 10) {
+    if (nameInputElement.value.length > 15) {
         display.innerHTML = "Please enter a valid name.";
         display.style.color = "red";
         nameInputElement.value = "";
