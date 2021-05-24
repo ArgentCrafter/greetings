@@ -8,7 +8,7 @@ const greet = greetFunctions();
 const regEx = /[a-z]/i;
 const timeOut = setTimeout(() => { display.innerHTML = ''; }, 5000);
 
-document.body.onload(() => {
+document.body.onload = (() => {
   counter.innerHTML = Object.keys(JSON.parse(localStorage.getItem('names'))).length;
 });
 
